@@ -1,0 +1,79 @@
+<%- include("../partials/header")%>
+<%- include("../partials/navbar")%>
+
+<div class="container mb-auto" style="margin-top: 5rem;">
+
+  <%- include("../partials/flash")%>
+
+  <h6 class="display-6">My Cart</h6>
+  
+  <div class="row mb-5">
+  <div class="col-lg-8">
+
+  <%for(let item of userCart){%>
+        <div class="card mb-3" style="width: 90%;">
+          <div class="row g-0">
+            <div class="col-md-4">
+              <img style="width: 200px; height: 100%;" src="<%=item.img%>" alt="...">
+            </div>
+            <div class="col-md-8">
+              <div class="card-body">
+                <h5 class="card-title"><%=item.name%></h5>
+                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                
+                <form action="/user/<%=currentUser._id%>/cart/<%=item._id%>?_method=DELETE" method="post">
+                  <button class="btn btn-sm btn-danger">remove</button>
+                </form>
+                
+                
+              </div>
+            </div>
+          </div>
+        </div>
+      <%}%>
+
+      
+      </div>
+
+      <div class="col-lg-4 mb-3">
+        <%totalAmount=0%>
+        <h6 class="display-6">Order</h6>
+        <ul class="list-group">
+         
+          <%for(let item of userCart){%>
+            <li class="list-group-item"><%=item.name%> <strong style="float: right;">&#8377; <%=item.price%></strong></li>
+            <%totalAmount+=item.price%>
+          <%}%>
+          
+        </ul>
+
+        <div class="mt-2">
+          <p class="fw-bold">Total Amount :  <span style="float: right; margin-right: 15px;">&#8377; <%=totalAmount%></span></p>
+          
+          <form action="/payment_gateway/payumoney" method="POST">
+            <input class="amount" type="hidden" name="amount" value="<%=totalAmount%>"/>
+            <input class="con" type="hidden" name="phone" value="9999999999" />
+            <input type="hidden" name="service_provider" 
+             value="payu_paisa"/>
+            <input type="hidden" class="product" name="productinfo" 
+             value="educational purpose"/>
+             
+             <button class="btn btn-success">Proceed To Pay</button>
+          </form>
+        
+        
+        </div>
+       
+      </div>
+     
+    </div>
+
+</div>
+
+
+<footer class="text-center text-lg-start fixed-bottom" style="background-color: #457b9d;">
+  <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+    © 2020 Copyright:
+    <a class="text-dark" href="/">Shopkart</a>
+  </div>
+</footer>
