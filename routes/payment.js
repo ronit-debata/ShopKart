@@ -32,8 +32,8 @@ router.post('/payment_gateway/payumoney',isLoggedIn, (req, res) => {
      //We have to additionally pass merchant key to API
     
      pay.key = process.env.MERCHANT_KEY //store in in different file;
-     pay.surl = 'http://localhost:3000/payment/success';                      //success redirect
-     pay.furl = 'http://localhost:3000/payment/fail';                         //failure redirect
+     pay.surl = 'https://shpkart.herokuapp.com/payment/success';                      //success redirect
+     pay.furl = 'https://shpkart.herokuapp.com/payment/fail';                         //failure redirect
      pay.hash = hash;
     //Making an HTTP/HTTPS call with request
     request.post({
