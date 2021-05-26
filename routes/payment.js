@@ -41,7 +41,7 @@ router.post('/payment_gateway/payumoney',isLoggedIn, (req, res) => {
             'Accept': 'application/json',
             'Content-Type': 'application/json'
         },
-        url: 'https://sandboxsecure.payu.in/_payment',                         //Testing url. Remember to change it to production url
+        url: 'https://test.payu.in/_payment',                         //Testing url. Remember to change it to production url
         form: pay
      }, function (error, httpRes, body) {
         if (error) 
