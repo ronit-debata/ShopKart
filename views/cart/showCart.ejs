@@ -14,12 +14,12 @@
         <div class="card mb-3" style="width: 90%;">
           <div class="row g-0">
             <div class="col-md-4">
-              <img style="width: 200px; height: 100%;" src="<%=item.img%>" alt="...">
+              <img style="width: 250px; height: 160px;" src="<%=item.img%>" alt="...">
             </div>
             <div class="col-md-8">
               <div class="card-body">
                 <h5 class="card-title"><%=item.name%></h5>
-                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                <p class="card-text"><%=item.desc.substring(0,70) %>...</p>
                 
                 <form action="/user/<%=currentUser._id%>/cart/<%=item._id%>?_method=DELETE" method="post">
                   <button class="btn btn-sm btn-danger">remove</button>
@@ -49,16 +49,11 @@
 
         <div class="mt-2">
           <p class="fw-bold">Total Amount :  <span style="float: right; margin-right: 15px;">&#8377; <%=totalAmount%></span></p>
-          
-          <form action="/payment_gateway/payumoney" method="POST">
-            <input class="amount" type="hidden" name="amount" value="<%=totalAmount%>"/>
-            <input class="con" type="hidden" name="phone" value="9999999999" />
-            <input type="hidden" name="service_provider" 
-             value="payu_paisa"/>
-            <input type="hidden" class="product" name="productinfo" 
-             value="educational purpose"/>
-             
-             <button class="btn btn-success">Proceed To Pay</button>
+          <%usdAmt=0%> 
+          <%usdAmt=Math.round((totalAmount/75)*100)/100%>
+          <form action="/pay" method="POST">
+            <input class="amount" type="hidden" name="amount" value="<%=usdAmt%>"/>            
+            <button class="btn btn-success">Proceed To Pay</button>
           </form>
         
         
