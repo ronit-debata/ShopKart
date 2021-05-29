@@ -25,7 +25,10 @@ const userSchema = new mongoose.Schema({
             type: mongoose.Schema.Types.ObjectId,
             ref:'Order'
         }
-    ]
+    ],
+    //for password resetting
+    resetPasswordToken: String,
+    resetPasswordExpires: Date,
 })
 
 userSchema.plugin(passportLocalMongoose);

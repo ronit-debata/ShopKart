@@ -1,0 +1,25 @@
+<%- include("./partials/header")%>
+<%- include("./partials/navbar")%>
+
+
+
+<div class="container" style="margin-top:5rem;width:40vw;margin-bottom: 20rem;">
+           
+            <form class="validated-form" action="/forgotpassword?_method=PUT" method="POST" style="max-width:100%;margin:10px auto" novalidate>
+                <%- include("./partials/flash")%>
+                <h4 class="display-4">Forgot Password</h4>
+                <div class="mb-3">
+                  <label for="email" class="form-label">Email</label>
+                  <input type="text" class="form-control" id="email" placeholder="Email" name="email" required>
+                </div>
+               
+                <button type="submit" class="btn btn-success">Reset Password</button>
+                  <br>
+                  <br>
+              </form>
+        
+   
+</div>
+
+
+<%- include("./partials/footer")%>

@@ -22,6 +22,7 @@ const authRoutes = require('./routes/auth');
 const cartRoutes = require('./routes/cart');
 const paymentRoutes = require('./routes/payment');
 const userRoutes = require('./routes/user');
+const forgotpasswordRoutes = require('./routes/forgotpassword');
 
 mongoose.connect(process.env.DB_URL,
     {
@@ -85,6 +86,7 @@ app.use(authRoutes);
 app.use(cartRoutes);
 app.use(paymentRoutes);
 app.use(userRoutes);
+app.use(forgotpasswordRoutes);
 
 
 app.listen(process.env.PORT || 3000, () => {

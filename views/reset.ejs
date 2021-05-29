@@ -1,0 +1,30 @@
+<%- include("./partials/header")%>
+<%- include("./partials/navbar")%>
+
+
+
+<div class="container" style="margin-top:5rem;width:40vw;margin-bottom: 20rem;">
+           
+            <form class="validated-form" action="/reset/<%=token%>?_method=PUT" method="POST" style="max-width:100%;margin:10px auto" novalidate>
+                <%- include("./partials/flash")%>
+                <h4 class="display-4">Reset Password</h4>
+                <div class="mb-3">
+                  <label for="password" class="form-label">New Password</label>
+                  <input type="password" class="form-control" id="password" placeholder="New Password" name="password" required>
+                </div>
+                <div class="mb-3">
+                    <label for="confirm" class="form-label">Confirm Password</label>
+                    <input type="password" class="form-control" id="confirm" placeholder="Confirm Password" name="confirm" required>
+                </div>
+               
+                <button type="submit" class="btn btn-success">Update Password</button>
+                  <br>
+                  <br>
+                <a href="/register">SignUp?</a>
+              </form>
+        
+   
+</div>
+
+
+<%- include("./partials/footer")%>
